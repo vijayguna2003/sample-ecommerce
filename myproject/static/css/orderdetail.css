@@ -1,0 +1,93 @@
+body {
+    background: #eef2f7;
+    font-family: "Poppins", sans-serif;
+}
+
+.order-container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+.order-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.order-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.order-info p {
+    font-size: 15px;
+    margin: 6px 0;
+}
+
+.section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+.items-table th {
+    background: #4b73ff;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.items-table tr:hover {
+    background: #f4f6ff;
+}
+
+/* Status badge styles */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+}
+
+/* Colors based on status */
+.paid {
+    background: #2ecc71;
+}
+
+.pending {
+    background: #f1c40f;
+    color: black !important;
+}
+
+.failed {
+    background: #e74c3c;
+}
+
+.cod {
+    background: #3498db;
+}
+
+.order-total {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: right;
+    font-weight: 600;
+}

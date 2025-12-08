@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }}'s Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/profiledashboard.css' %}">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>My Dashboard</h2>
+
+        <a href="{% url 'home'%}">Home</a>
+        <a href="{% url 'edit_profile' %}">Edit Profile</a>
+        <a href="{% url 'change_password' %}">Change Password</a>
+        <a href="/">Back to Shop</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <h1>{{ user.username }}'s Dashboard</h1>
+
+        <!-- Summary Cards -->
+        <div class="dashboard-cards">
+
+            <div class="card">
+                <h3>Total Orders</h3>
+                <p>{{ total_orders }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Spent</h3>
+                <p>₹{{ total_spent }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Member Since</h3>
+                <p>{{ user.date_joined|date:"Y-m-d" }}</p>
+            </div>
+
+        </div>
+
+        <!-- Recent Items Table -->
+        <div class="table-container">
+            <h3>Recent Purchases</h3>
+
+            {% if recent_items %}
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+
+                {% for item in recent_items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>₹{{ item.price }}</td>
+                    <td>{{ item.order.created_at|date:"Y-m-d" }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            {% else %}
+            <p>No recent purchases.</p>
+            {% endif %}
+        </div>
+
+        <!-- Buttons -->
+        <div class="profile-actions">
+            <a href="{% url 'edit_profile' %}">Edit Profile</a>
+            <a href="{% url 'change_password' %}">Change Password</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

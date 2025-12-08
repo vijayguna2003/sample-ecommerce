@@ -1,0 +1,118 @@
+/* Global Theme */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+}
+
+/* Table Styling */
+.table-container {
+    margin-top: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+}
+
+table th {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 15px;
+}
+
+table tr:hover {
+    background: #f3f7ff;
+}
+
+/* Remove Button */
+.remove-btn {
+    background: #dc2626;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: #b91c1c;
+}
+
+/* Total */
+.total {
+    margin-top: 20px;
+    font-size: 22px;
+    text-align: right;
+    color: #111;
+}
+
+/* Checkout Button */
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #16a34a;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.checkout-btn:hover {
+    background: #15803d;
+}
+
+/* Empty Cart */
+.empty {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Back Link */
+.back-link {
+    display: block;
+    margin-top: 18px;
+    text-decoration: none;
+    color: #2563eb;
+    font-size: 16px;
+    text-align: center;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

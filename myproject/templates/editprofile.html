@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="{% static 'css/editprofile.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Edit Profile</h1>
+
+        <form method="POST" enctype="multipart/form-data" class="form-box">
+            {% csrf_token %}
+            
+            <div class="form-section">
+                {{ u_form.as_p }}
+                {{ p_form.as_p }}
+            </div>
+
+            <button type="submit" class="save-btn">Save Changes</button>
+        </form>
+
+        <a href="{% url 'profile_dashboard' %}" class="back-link">← Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

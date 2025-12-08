@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Checkout</h1>
+
+        <h2 class="total">Total: ₹{{ total }}</h2>
+
+        <form method="POST" class="form-box">
+            {% csrf_token %}
+
+            <label class="label">Payment Method:</label>
+
+            <div class="payment-options">
+                <label class="radio">
+                    <input type="radio" name="payment_method" value="COD" checked>
+                    Cash on Delivery
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="payment_method" value="PAID">
+                    Dummy Online Payment
+                </label>
+            </div>
+
+            <button type="submit" class="place-btn">Place Order</button>
+        </form>
+
+        <a href="{% url 'cart' %}" class="back-link">← Back to Cart</a>
+    </div>
+
+</body>
+</html>

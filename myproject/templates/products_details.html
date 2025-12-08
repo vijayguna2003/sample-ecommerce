@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Product Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+        .product-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+        }
+        .product-container img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .details {
+            flex: 1;
+        }
+        h2 {
+            margin: 0;
+            color: #111;
+        }
+        .price {
+            color: #e63946;
+            font-size: 22px;
+            margin: 15px 0;
+        }
+        .description {
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="product-container">
+    
+    {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% else %}
+        <img src="/static/default-product.png" alt="Product Image">
+    {% endif %}
+
+    <div class="details">
+        <h2>{{ product.name }}</h2>
+
+        <p class="price">₹ {{ product.price }}</p>
+
+        <p class="description">{{ product.description }}</p>
+
+        <a href="{% url 'add_to_cart' product.id %}" class="btn">Add to Cart</a>
+    </div>
+
+</div>
+
+</body>
+</html>

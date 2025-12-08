@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Dashboard Theme -->
+    <link rel="stylesheet" href="{% static 'css/profile_dashboard.css' %}">
+
+    <style>
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .contact-card p, 
+        .contact-card li {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .query-form label {
+            font-weight: 500;
+            margin-top: 8px;
+            display: block;
+        }
+
+        .query-form input,
+        .query-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            font-size: 14px;
+            font-family: Poppins;
+        }
+
+        .query-form textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            margin-top: 15px;
+            background: #4b73ff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        .submit-btn:hover {
+            background: #3a5de0;
+        }
+
+    </style>
+
+</head>
+
+<body class="profile-page">
+
+    <div class="contact-wrapper">
+
+        <h1 class="profile-title">Contact Us</h1>
+
+        <!-- CONTACT INFO -->
+        <div class="contact-card">
+            <p><strong>Email:</strong> support@ecom.com</p>
+            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>Address:</strong> Hyderabad, Telangana, India</p>
+        </div>
+
+        <!-- HELPING GUIDELINES -->
+        <div class="contact-card">
+            <h3>Helping Guidelines</h3>
+            <ul>
+                <li>We respond to support queries within 24–48 hours.</li>
+                <li>Provide your order ID for faster resolution.</li>
+                <li>For product issues, attach photos or videos.</li>
+                <li>For returns/refunds, mention your payment method.</li>
+                <li>Be polite — respectful communication ensures faster help.</li>
+            </ul>
+        </div>
+
+        <!-- QUERY FORM -->
+        <div class="contact-card">
+            <h3>Send a Query</h3>
+
+            <form method="POST" class="query-form">
+                {% csrf_token %}
+
+                <label>Your Name:</label>
+                <input type="text" name="name" required>
+
+                <label>Email Address:</label>
+                <input type="email" name="email" required>
+
+                <label>Your Message:</label>
+                <textarea name="message" rows="5" required></textarea>
+
+                <button type="submit" class="submit-btn">Submit Query</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

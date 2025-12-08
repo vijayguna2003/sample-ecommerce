@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+    <!-- Google Font (Dashboard Font) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Products CSS -->
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+</head>
+
+<body class="products-page">
+
+    <div class="products-container">
+        <h1 class="title">Available Products</h1>
+
+        {% if products %}
+        <div class="products-grid">
+            {% for product in products %}
+                <div class="product-card">
+                    
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="product-img">
+                    {% endif %}
+
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <p class="product-description">{{ product.description }}</p>
+
+                    <p class="product-price">₹{{ product.price }}</p>
+
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn-add">Add to Cart</a>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p class="no-products">No products available.</p>
+        {% endif %}
+
+        <div class="view-cart">
+            <a href="{% url 'cart' %}" class="btn-cart">View Cart</a>
+        </div>
+    </div>
+
+</body>
+</html>

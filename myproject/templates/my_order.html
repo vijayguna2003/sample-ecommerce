@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="{% static 'css/myorders.css' %}">
+</head>
+
+<body class="orders-page">
+
+<div class="orders-container">
+    <h1 class="orders-title">My Orders</h1>
+
+    {% if orders %}
+        <div class="orders-card">
+
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>#{{ order.id }}</td>
+                        <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
+                        <td>₹{{ order.total_amount }}</td>
+                        <td>{{ order.get_payment_method_display }}</td>
+                        <td>{{ order.payment_status }}</td>
+                        <td><a class="view-btn" href="{% url 'orderdetail' order.id %}">View Details</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    {% else %}
+        <div class="no-orders">
+            <p>You haven't placed any orders yet.</p>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="{% static 'css/orderdetail.css' %}">
+</head>
+
+<body>
+
+<div class="order-container">
+
+    <div class="order-card">
+
+        <h1 class="order-title">Order #{{ order.id }}</h1>
+
+        <div class="order-info">
+            <p><strong>Date:</strong> {{ order.created_at|date:"Y-m-d H:i" }}</p>
+
+            <p><strong>Payment Method:</strong> {{ order.get_payment_method_display }}</p>
+
+            <p>
+                <strong>Status:</strong>
+                <span class="status-badge {{ order.payment_status|lower }}">
+                    {{ order.payment_status }}
+                </span>
+            </p>
+        </div>
+
+        <h3 class="section-title">Items</h3>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>₹{{ item.price }}</td>
+                    <td>₹{{ item.price|floatformat:2|add:item.quantity }}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p class="order-total">
+            <strong>Order Total: ₹{{ order.total_amount }}</strong>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
